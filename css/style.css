@@ -232,15 +232,17 @@ section{padding:96px 0;}
 .team-social a:hover{background:var(--grad);}
 .team-social a:hover svg{color:#fff;}
 
-/* View-profile button on each team card */
+/* View-profile button on each team card — compact by default so it stays
+   proportionate on every breakpoint, shrinking further on small screens */
 .team-view-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:12px;padding:8px 16px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:12px;padding:6px 13px;border-radius:999px;
   background:var(--grad-soft);border:1px solid transparent;
-  color:var(--violet-600);font-size:12.5px;font-weight:700;
+  color:var(--violet-600);font-size:11.5px;font-weight:700;
   font-family:var(--font-body);cursor:pointer;transition:.2s ease;
+  line-height:1.4;
 }
-.team-view-btn svg{width:13px;height:13px;transition:transform .2s ease;}
+.team-view-btn svg{width:11px;height:11px;transition:transform .2s ease;}
 .team-view-btn:hover{background:var(--grad);color:#fff;transform:translateY(-1px);}
 .team-view-btn:hover svg{transform:translateX(2px);}
 .team-view-btn:focus-visible{outline:2px solid var(--violet-500);outline-offset:2px;}
@@ -310,6 +312,19 @@ body.modal-open{overflow:hidden;}
 .service-card:hover .service-link svg{transform:translateX(3px);}
 .services-cta{text-align:center;margin-top:36px;}
 
+/* Per-service demo video on the services detail page */
+.service-video{
+  margin:16px 0 4px;
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  background:var(--navy-950);
+  border:1px solid var(--paper-line);
+  aspect-ratio:16/9;
+}
+.service-video video{
+  width:100%;height:100%;display:block;background:#000;object-fit:cover;
+}
+
 /* =========================================================
    PORTFOLIO
 ========================================================= */
@@ -321,11 +336,46 @@ body.modal-open{overflow:hidden;}
 .portfolio-card{border-radius:var(--radius-md);overflow:hidden;position:relative;box-shadow:var(--shadow-2);}
 .portfolio-thumb{aspect-ratio:4/3.4;background:linear-gradient(160deg,#1a2036,#0c101d);position:relative;overflow:hidden;}
 .portfolio-thumb svg{width:100%;height:100%;}
+.portfolio-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .portfolio-tag{position:absolute;top:12px;left:12px;background:rgba(8,11,20,.75);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;letter-spacing:.03em;}
 .portfolio-caption{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);}
 .portfolio-caption h4{color:#fff;font-size:14.5px;}
 .portfolio-caption span{color:var(--text-onlight-dim);font-size:12px;}
 .portfolio-more{text-align:center;margin-top:36px;}
+
+/* Upload-your-project card */
+.upload-card{
+  max-width:760px;margin:0 auto;
+  background:#fff;border:1px solid var(--paper-line);border-radius:var(--radius-lg);
+  padding:36px;box-shadow:var(--shadow-2);
+}
+.upload-dropzone{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;text-align:center;
+  border:1.5px dashed var(--paper-line);border-radius:var(--radius-md);
+  padding:32px 20px;cursor:pointer;background:var(--paper-soft);
+  transition:.2s ease;position:relative;
+}
+.upload-dropzone:hover, .upload-dropzone.drag-over{
+  border-color:var(--violet-500);background:var(--grad-soft);
+}
+.upload-dropzone svg{width:26px;height:26px;color:var(--violet-600);}
+.upload-dropzone-text{font-size:14px;font-weight:600;color:var(--ink-700);}
+.upload-dropzone-hint{font-size:12px;color:var(--ink-300);}
+.upload-dropzone input[type="file"]{
+  position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;
+}
+.upload-file-list{margin-top:12px;display:flex;flex-direction:column;gap:8px;}
+.upload-file-list li{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--paper-soft);border:1px solid var(--paper-line);border-radius:9px;
+  padding:9px 12px;font-size:13px;color:var(--ink-700);
+}
+.upload-file-list li span.file-size{color:var(--ink-300);font-size:11.5px;flex:none;}
+.upload-file-list li button{
+  background:none;border:none;color:var(--ink-300);cursor:pointer;font-size:16px;line-height:1;padding:0 2px;
+}
+.upload-file-list li button:hover{color:#d64545;}
 
 /* =========================================================
    TESTIMONIALS
@@ -431,6 +481,14 @@ body.modal-open{overflow:hidden;}
 .value-card .service-ico svg{color:var(--violet-600);}
 .value-card h4{font-size:15px;margin-bottom:6px;}
 .value-card p{font-size:13px;color:var(--ink-500);}
+
+/* "Show More" control for the team grid — hidden by default (desktop
+   already shows everyone); only revealed once the mobile rule below
+   starts hiding members past the 4th card */
+.team-more-wrap{display:none;justify-content:center;margin-top:8px;}
+.team-more-btn{margin:0 auto;}
+.team-more-btn svg{transition:transform .2s ease;}
+.team-more-btn[aria-expanded="true"] svg{transform:rotate(180deg);}
 
 /* Privacy Policy */
 .policy{background:var(--paper);}
@@ -567,6 +625,12 @@ body.modal-open{overflow:hidden;}
   .nav-toggle{display:flex;}
   .nav-cta .btn{display:none;}
 }
+@media(max-width:768px){
+  /* Team member view-profile button shrinks a step further once we're
+     in the single/double-column team layouts */
+  .team-view-btn{padding:5px 11px;font-size:11px;gap:4px;margin-top:10px;}
+  .team-view-btn svg{width:10px;height:10px;}
+}
 @media(max-width:560px){
   .team-grid{grid-template-columns:repeat(2,1fr);}
   .services-grid{grid-template-columns:1fr;}
@@ -589,6 +653,22 @@ body.modal-open{overflow:hidden;}
   .nav-links{inset:64px 10px auto 10px;}
   .team-modal-card{max-width:100%;}
   .team-modal-body{padding:22px 20px 26px;}
+
+  /* Show only the first 4 team members (index preview grid and the full
+     team-page grid) on mobile; the rest reveal via the "Show More" button.
+     JS toggles [data-team-expanded] on the grid once tapped. */
+  .team-grid > .team-card:nth-child(n+5),
+  .team-page-grid > .team-card:nth-child(n+5){
+    display:none;
+  }
+  .team-grid[data-team-expanded] > .team-card:nth-child(n+5),
+  .team-page-grid[data-team-expanded] > .team-card:nth-child(n+5){
+    display:block;
+  }
+  .team-more-wrap{display:flex;}
+
+  .upload-card{padding:24px 18px;}
+  .upload-dropzone{padding:26px 14px;}
 }
 @media(max-width:980px) and (min-width:561px){
   .team-page-grid{grid-template-columns:repeat(3,1fr);}
