@@ -217,6 +217,140 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Team grid "Show More" (mobile: 4 members, then all) ---------- */
+  const teamMoreBtn = document.getElementById('teamMoreBtn');
+  if (teamMoreBtn) {
+    const teamGrid = document.getElementById('teamGrid') || document.querySelector('.team-grid, .team-page-grid');
+    teamMoreBtn.addEventListener('click', () => {
+      if (!teamGrid) return;
+      const expanded = teamGrid.hasAttribute('data-team-expanded');
+      if (expanded) {
+        teamGrid.removeAttribute('data-team-expanded');
+        teamMoreBtn.firstChild.textContent = 'Show More Team Members';
+        teamMoreBtn.setAttribute('aria-expanded', 'false');
+        teamGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        teamGrid.setAttribute('data-team-expanded', '');
+        teamMoreBtn.firstChild.textContent = 'Show Fewer Team Members';
+        teamMoreBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  /* ---------- Project upload dropzone (portfolio.html) ---------- */
+  const uploadForm = document.getElementById('projectUploadForm');
+  if (uploadForm) {
+    const dropzone = document.getElementById('uploadDropzone');
+    const fileInput = document.getElementById('upFile');
+    const fileListEl = document.getElementById('uploadFileList');
+    const dropzoneText = document.getElementById('uploadDropzoneText');
+    const successEl = document.getElementById('uploadSuccess');
+
+    // Files staged for "upload" — kept in memory only, nothing is sent
+    // anywhere without a backend. Wire this to your server or an email
+    // service to actually receive the files.
+    let stagedFiles = [];
+
+    function formatSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function renderFileList() {
+      fileListEl.innerHTML = '';
+      stagedFiles.forEach((file, i) => {
+        const li = document.createElement('li');
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = file.name;
+        const sizeSpan = document.createElement('span');
+        sizeSpan.className = 'file-size';
+        sizeSpan.textContent = formatSize(file.size);
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.setAttribute('aria-label', 'Remove ' + file.name);
+        removeBtn.textContent = '×';
+        removeBtn.addEventListener('click', () => {
+          stagedFiles.splice(i, 1);
+          renderFileList();
+        });
+        li.appendChild(nameSpan);
+        li.appendChild(sizeSpan);
+        li.appendChild(removeBtn);
+        fileListEl.appendChild(li);
+      });
+      dropzoneText.textContent = stagedFiles.length
+        ? stagedFiles.length + ' file' + (stagedFiles.length > 1 ? 's' : '') + ' selected — click to add more'
+        : 'Drag & drop images, video or documents here, or click to browse';
+    }
+
+    function addFiles(fileList) {
+      Array.from(fileList).forEach(f => stagedFiles.push(f));
+      renderFileList();
+    }
+
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        addFiles(e.target.files);
+        fileInput.value = '';
+      });
+    }
+
+    if (dropzone) {
+      ['dragenter', 'dragover'].forEach(evt => {
+        dropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropzone.classList.add('drag-over');
+        });
+      });
+      ['dragleave', 'drop'].forEach(evt => {
+        dropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('drag-over');
+        });
+      });
+      dropzone.addEventListener('drop', (e) => {
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+          addFiles(e.dataTransfer.files);
+        }
+      });
+    }
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!uploadForm.checkValidity()) {
+        uploadForm.reportValidity();
+        return;
+      }
+      // No backend is wired up yet — this only confirms the details were
+      // captured client-side. Connect this to your server/API or an email
+      // service (e.g. mailto: fallback below) to actually deliver files.
+      successEl.classList.add('show');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      uploadForm.reset();
+      stagedFiles = [];
+      renderFileList();
+    });
+  }
+
+  /* ---------- Contact form (contact.html) ---------- */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const successEl = document.getElementById('contactSuccess');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      // No backend is wired up yet — wire this to your server/API or a
+      // form service to actually deliver messages to wazir@annotyra.com.
+      successEl.classList.add('show');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      contactForm.reset();
+    });
+  }
+
   function menuIcon() {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
   }
