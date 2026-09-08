@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="brand-name">AnotaVision</span>
           </a>
           <p>High-quality, accurate and scalable data annotation services to power AI, ML and computer vision solutions.</p>
+          <p><a href="mailto:wazir@annotyra.com" style="color:#fff;font-weight:600;">wazir@annotyra.com</a></p>
           <div class="footer-socials">
             <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.5 8h4V23h-4V8zM8.5 8h3.8v2h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4V8z"/></svg></a>
             <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 002-2.5c-.9.5-1.9.9-3 1.1a4.5 4.5 0 00-7.6 4.1A12.8 12.8 0 011.6 3.6a4.5 4.5 0 001.4 6 4.5 4.5 0 01-2-.6v.1c0 2.2 1.6 4 3.7 4.4a4.5 4.5 0 01-2 .1 4.5 4.5 0 004.2 3.1A9 9 0 010 19.6a12.8 12.8 0 006.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3z"/></svg></a>
