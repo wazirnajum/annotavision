@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio | Annotyra Data Annotation</title>
-<meta name="description" content="See Annotyra's data annotation portfolio across autonomous vehicles, retail, healthcare and robotics projects.">
+<meta name="description" content="See real annotation projects delivered by Annotyra, and upload your own project to feature it in our portfolio.">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,9 +65,9 @@
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow">Our Portfolio</span>
-    <h1>Projects We're <span class="accent">Proud Of</span></h1>
-    <p>A look at the annotation work powering AI products across industries.</p>
+    <span class="eyebrow">Our Work</span>
+    <h1>Real Datasets, Delivered for Real <span class="accent">AI Products</span></h1>
+    <p>A look at annotation projects we've delivered — and a place to send us your own project.</p>
     <div class="breadcrumb"><a href="index.html">Home</a> / Portfolio</div>
   </div>
 </section>
@@ -75,62 +75,152 @@
 <section class="portfolio">
   <div class="container">
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="autonomous">Autonomous Vehicles</button>
-      <button class="filter-btn" data-filter="retail">Retail</button>
-      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-      <button class="filter-btn" data-filter="robotics">Robotics</button>
+      <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+      <button type="button" class="filter-btn" data-filter="image">Image</button>
+      <button type="button" class="filter-btn" data-filter="video">Video</button>
+      <button type="button" class="filter-btn" data-filter="3d">3D Point Cloud</button>
+      <button type="button" class="filter-btn" data-filter="text">Text</button>
+      <button type="button" class="filter-btn" data-filter="audio">Audio</button>
     </div>
 
     <div class="portfolio-grid">
-      <div class="portfolio-card reveal" data-category="autonomous">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><rect x="20" y="90" width="60" height="60" fill="#252d48"/><rect x="100" y="70" width="50" height="80" fill="#1b2338"/><rect x="30" y="30" width="90" height="40" rx="4" fill="none" stroke="#8a5cf0" stroke-width="2"/></svg></div>
-        <span class="portfolio-tag">Autonomous</span>
-        <div class="portfolio-caption"><h4>Autonomous Driving Dataset</h4><span>Image Annotation</span></div>
+      <div class="portfolio-card reveal" data-category="image">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/retail-shelf.jpg" alt="Retail shelf image annotation project">
+        </div>
+        <span class="portfolio-tag">Image</span>
+        <div class="portfolio-caption">
+          <h4>Retail Shelf Detection</h4>
+          <span>Bounding boxes for 40+ product SKUs</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="retail" data-delay=".05s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><g stroke="#8a5cf0" stroke-width="2" fill="none"><rect x="20" y="20" width="50" height="130"/><rect x="80" y="20" width="50" height="130"/><rect x="140" y="20" width="45" height="130"/></g></svg></div>
-        <span class="portfolio-tag">Retail</span>
-        <div class="portfolio-caption"><h4>Retail Product Recognition</h4><span>Image Annotation</span></div>
+      <div class="portfolio-card reveal" data-delay=".05s" data-category="video">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/traffic-tracking.jpg" alt="Traffic camera video annotation project">
+        </div>
+        <span class="portfolio-tag">Video</span>
+        <div class="portfolio-caption">
+          <h4>Traffic Flow Tracking</h4>
+          <span>Multi-object tracking across intersections</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="healthcare" data-delay=".1s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><circle cx="100" cy="85" r="55" fill="none" stroke="#ff5c7c" stroke-width="2"/><circle cx="100" cy="85" r="30" fill="none" stroke="#8a5cf0" stroke-width="2"/></svg></div>
-        <span class="portfolio-tag">Healthcare</span>
-        <div class="portfolio-caption"><h4>Medical Imaging Dataset</h4><span>Image Annotation</span></div>
+      <div class="portfolio-card reveal" data-delay=".1s" data-category="3d">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/lidar-scene.jpg" alt="LiDAR point cloud annotation project">
+        </div>
+        <span class="portfolio-tag">3D Point Cloud</span>
+        <div class="portfolio-caption">
+          <h4>Autonomous Driving LiDAR</h4>
+          <span>3D cuboids for road-scene perception</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="robotics" data-delay=".15s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><g fill="#4ade80"><circle cx="60" cy="60" r="2"/><circle cx="90" cy="70" r="2"/><circle cx="120" cy="55" r="2"/><circle cx="140" cy="90" r="2"/><circle cx="70" cy="110" r="2"/><circle cx="110" cy="120" r="2"/><circle cx="150" cy="60" r="2"/><circle cx="50" cy="100" r="2"/></g></svg></div>
-        <span class="portfolio-tag">Robotics</span>
-        <div class="portfolio-caption"><h4>LiDAR Point Cloud</h4><span>3D Annotation</span></div>
+      <div class="portfolio-card reveal" data-category="text">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/support-tickets.jpg" alt="Support ticket text annotation project">
+        </div>
+        <span class="portfolio-tag">Text</span>
+        <div class="portfolio-caption">
+          <h4>Support Ticket Classification</h4>
+          <span>Intent and sentiment labeling for NLP</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="autonomous">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><path d="M20 130 L60 60 L100 130 Z" fill="none" stroke="#f5c93a" stroke-width="2"/><circle cx="150" cy="90" r="20" fill="none" stroke="#60a5fa" stroke-width="2"/></svg></div>
-        <span class="portfolio-tag">Autonomous</span>
-        <div class="portfolio-caption"><h4>Traffic Sign Recognition</h4><span>Video Annotation</span></div>
+      <div class="portfolio-card reveal" data-delay=".05s" data-category="audio">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/call-center.jpg" alt="Call center audio annotation project">
+        </div>
+        <span class="portfolio-tag">Audio</span>
+        <div class="portfolio-caption">
+          <h4>Call Center Transcription</h4>
+          <span>Speaker diarization across 6 languages</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="retail" data-delay=".05s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><rect x="30" y="40" width="140" height="90" rx="6" fill="none" stroke="#8a5cf0" stroke-width="2"/><line x1="30" y1="85" x2="170" y2="85" stroke="#8a5cf0" stroke-width="1"/></svg></div>
-        <span class="portfolio-tag">Retail</span>
-        <div class="portfolio-caption"><h4>Shelf Inventory Tracking</h4><span>Image Annotation</span></div>
+      <div class="portfolio-card reveal" data-delay=".1s" data-category="image">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio/medical-imaging.jpg" alt="Medical imaging annotation project">
+        </div>
+        <span class="portfolio-tag">Image</span>
+        <div class="portfolio-caption">
+          <h4>Medical Imaging Segmentation</h4>
+          <span>Pixel-level masks for diagnostic models</span>
+        </div>
       </div>
-      <div class="portfolio-card reveal" data-category="healthcare" data-delay=".1s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><path d="M100 40c-30 0-50 20-50 50s20 50 50 50 50-20 50-50-20-50-50-50z" fill="none" stroke="#4ade80" stroke-width="2"/></svg></div>
-        <span class="portfolio-tag">Healthcare</span>
-        <div class="portfolio-caption"><h4>Cell Segmentation Dataset</h4><span>Image Annotation</span></div>
-      </div>
-      <div class="portfolio-card reveal" data-category="robotics" data-delay=".15s">
-        <div class="portfolio-thumb"><svg viewBox="0 0 200 170"><rect width="200" height="170" fill="#171d30"/><rect x="60" y="30" width="80" height="110" rx="10" fill="none" stroke="#ff5c7c" stroke-width="2"/><circle cx="100" cy="60" r="8" fill="none" stroke="#8a5cf0" stroke-width="2"/></svg></div>
-        <span class="portfolio-tag">Robotics</span>
-        <div class="portfolio-caption"><h4>Warehouse Robot Vision</h4><span>3D Annotation</span></div>
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" style="background:var(--paper-soft);padding-top:0;">
+  <div class="container">
+    <div class="section-head left">
+      <span class="eyebrow">Have a Project?</span>
+      <h2>Upload Your Project</h2>
+      <p>Send us your data directly and we'll get back to you with scope and timeline — or add it to our portfolio once delivered.</p>
+    </div>
+
+    <div class="upload-card">
+      <form id="projectUploadForm" novalidate>
+        <div class="form-success" id="uploadSuccess">Thanks — your project details were received. We'll email you at the address you provided within 1 business day.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="upProjectName">Project Name</label>
+            <input type="text" id="upProjectName" name="projectName" required placeholder="e.g. Retail Shelf Detection">
+          </div>
+          <div class="form-group">
+            <label for="upCategory">Annotation Type</label>
+            <select id="upCategory" name="category" required>
+              <option value="" disabled selected>Select a type</option>
+              <option value="image">Image Annotation</option>
+              <option value="video">Video Annotation</option>
+              <option value="3d">3D Point Cloud</option>
+              <option value="text">Text Annotation</option>
+              <option value="audio">Audio Annotation</option>
+              <option value="custom">Custom Annotation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="upName">Your Name</label>
+            <input type="text" id="upName" name="name" required placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="upEmail">Your Email</label>
+            <input type="email" id="upEmail" name="email" required placeholder="you@company.com">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:16px;">
+          <label for="upNotes">Project Details</label>
+          <textarea id="upNotes" name="notes" placeholder="Tell us about the data, volume, and deadline"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom:6px;">
+          <label>Upload Files</label>
+          <label class="upload-dropzone" id="uploadDropzone" for="upFile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+            <span class="upload-dropzone-text" id="uploadDropzoneText">Drag &amp; drop images, video or documents here, or click to browse</span>
+            <span class="upload-dropzone-hint">Images, video, audio, CSV/JSON, ZIP — up to 200MB per file</span>
+            <input type="file" id="upFile" name="files" multiple accept="image/*,video/*,audio/*,.csv,.json,.zip,.pdf">
+          </label>
+          <ul class="upload-file-list" id="uploadFileList"></ul>
+        </div>
+
+        <p class="form-note">Prefer email? Send files directly to <a href="mailto:wazir@annotyra.com" style="color:var(--violet-600);font-weight:600;">wazir@annotyra.com</a>.</p>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:18px;">
+          Submit Project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
     </div>
   </div>
 </section>
 
 <section class="cta-strip">
   <div class="container">
-    <h3>Have a dataset that needs expert annotation?</h3>
-    <a href="contact.html" class="btn btn-outline-dark">Start a Project
+    <h3>Not ready to upload? Talk to us about your project first.</h3>
+    <a href="contact.html" class="btn btn-outline-dark">Talk to Our Team
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
