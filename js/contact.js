@@ -11,7 +11,7 @@
 // submission goes straight into the inbox automatically, with no
 // popup, no redirect, no page reload.
 document.addEventListener('DOMContentLoaded', function () {
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/waziralihaideri105@gmail.com';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/wazir@annotyra.com';
   var contactForm = document.getElementById('contact-form');
   if (!contactForm) return;
   var formSuccess = document.getElementById('form-success');
